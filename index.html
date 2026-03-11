@@ -1,0 +1,198 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mix Music | Web Rádio Professional</title>
+    
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#10b981">
+    <link rel="apple-touch-icon" href="https://picsum.photos/180/180">
+
+    <!-- Metadados para Notificações e Compartilhamento (Push Preview) -->
+    <meta property="og:title" content="Mix Music | Web Rádio Professional">
+    <meta property="og:description" content="Engenharia de som profissional e louvor de alta qualidade.">
+    <meta property="og:image" content="https://i.postimg.cc/RZB84W4v/LOGO-MIXMUSIC-STREAM-02.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:url" content="https://mixmusic.stream">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Mix Music | Web Rádio Professional">
+    <meta name="twitter:description" content="Engenharia de som profissional e louvor de alta qualidade.">
+    <meta name="twitter:image" content="https://i.postimg.cc/RZB84W4v/LOGO-MIXMUSIC-STREAM-02.png">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <!-- Favicon Dinâmico -->
+    <link id="dynamic-favicon" rel="icon" type="image/svg+xml">
+    <style>
+      :root {
+        --color-primary: #DC2626;
+        --color-primary-rgb: 220, 38, 38;
+        --color-secondary: #111827;
+        --color-accent: #F87171;
+        --color-bg: #050505;
+        --color-card: #121212;
+        --transition-speed: 0.6s;
+        --transition-easing: cubic-bezier(0.2, 0, 0, 1);
+      }
+
+      body {
+        font-family: 'Montserrat', sans-serif;
+        background-color: var(--color-bg);
+        margin: 0;
+        overflow: hidden;
+        -webkit-font-smoothing: antialiased;
+        background-attachment: fixed;
+        contain: layout style;
+      }
+
+      .theme-aware {
+        transition: background-color var(--transition-speed) var(--transition-easing),
+                    border-color var(--transition-speed) var(--transition-easing),
+                    color var(--transition-speed) var(--transition-easing),
+                    box-shadow var(--transition-speed) var(--transition-easing);
+        will-change: background-color, border-color;
+      }
+
+      @keyframes title-reveal {
+        0% { opacity: 0; transform: translateY(15px) scale(0.98); filter: blur(10px); }
+        100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+      }
+
+      @keyframes panel-entrance {
+        0% { opacity: 0; transform: scale(0.97) translateY(15px); filter: blur(10px); }
+        100% { opacity: 1; transform: scale(1) translateY(0); filter: blur(0); }
+      }
+
+      @keyframes tooltip-in {
+        0% { opacity: 0; transform: translateY(10px) scale(0.9); }
+        100% { opacity: 1; transform: translateY(0) scale(1); }
+      }
+
+      @keyframes ai-pulse {
+        0%, 100% { opacity: 0.3; transform: scale(1); }
+        50% { opacity: 1; transform: scale(1.1); }
+      }
+
+      @keyframes toolbar-shimmer {
+        0% { background-position: -200% 0; }
+        100% { background-position: 200% 0; }
+      }
+
+      .animate-title-reveal {
+        animation: title-reveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+
+      .animate-panel-entrance {
+        animation: panel-entrance 0.6s cubic-bezier(0.2, 0, 0, 1) forwards;
+      }
+
+      .animate-play-ripple {
+        animation: play-ripple 2s infinite;
+      }
+
+      .animate-play-breathing {
+        animation: play-breathing 4s ease-in-out infinite;
+      }
+
+      .toolbar-glass {
+        background: rgba(10, 10, 12, 0.35);
+        backdrop-filter: blur(32px) saturate(180%);
+        border: 1px solid rgba(255, 255, 255, 0.03);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+      }
+
+      .glass-panel {
+        position: relative;
+        background: rgba(10, 10, 12, 0.85); 
+        backdrop-filter: blur(55px) saturate(220%);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        box-shadow: 
+          0 50px 120px -30px rgba(0, 0, 0, 0.98),
+          inset 0 1px 1px rgba(255, 255, 255, 0.03);
+      }
+
+      .glass-panel-adaptive {
+        box-shadow: 
+          0 50px 120px -30px rgba(0, 0, 0, 0.98),
+          0 0 0 1px rgba(var(--color-primary-rgb), 0.1),
+          inset 0 1px 1px rgba(255, 255, 255, 0.03);
+      }
+
+      .gpu-accelerated {
+        transform: translateZ(0);
+        will-change: transform, opacity;
+      }
+
+      ::-webkit-scrollbar { width: 4px; }
+      ::-webkit-scrollbar-track { background: transparent; }
+      ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.05); border-radius: 10px; }
+      ::-webkit-scrollbar-thumb:hover { background: var(--color-primary); }
+
+      /* Control Sliders Refined */
+      input[type=range] {
+        -webkit-appearance: none;
+        background: transparent;
+      }
+      
+      input[type=range]::-webkit-slider-runnable-track {
+        width: 100%;
+        height: 4px;
+        cursor: pointer;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 2px;
+      }
+      
+      input[type=range]::-webkit-slider-thumb {
+        height: 16px;
+        width: 16px;
+        border-radius: 50%;
+        background: #FFFFFF;
+        cursor: pointer;
+        -webkit-appearance: none;
+        margin-top: -6px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.5), 0 0 0 4px rgba(255,255,255,0.05);
+        transition: all 0.3s var(--transition-easing);
+      }
+    </style>
+    <script>
+      window.updateFaviconColor = (color) => {
+        const favicon = document.getElementById('dynamic-favicon');
+        if (!favicon) return;
+        const svg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='14' fill='${color}' /><path d='M9 22V10h3l4 6 4-6h3v12h-2V12.5l-5 7.5-5-7.5V22H9z' fill='white'/></svg>`.trim();
+        favicon.href = `data:image/svg+xml;base64,${btoa(svg)}`;
+      };
+    </script>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.40.0",
+    "path": "https://esm.sh/path@^0.12.7",
+    "vite": "https://esm.sh/vite@^7.3.1",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.4"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="selection:bg-white/20">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then(reg => console.log('Service Worker registered successfully'))
+            .catch(err => console.log('Service Worker registration failed: ', err));
+        });
+      }
+    </script>
+</body>
+</html>

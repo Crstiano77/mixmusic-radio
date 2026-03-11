@@ -1,0 +1,21 @@
+{
+  "name": "Copy of Remix: Mix Music Stream ( PREMIUM )",
+  "short_name": "Mix Music",
+  "description": "A high-end Christian radio web application with professional equalization, sleep timer, animated visualizers, and multiple premium color themes.",
+  "icons": [
+    {
+      "src": "https://i.postimg.cc/RZB84W4v/LOGO-MIXMUSIC-STREAM-02.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://i.postimg.cc/RZB84W4v/LOGO-MIXMUSIC-STREAM-02.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "requestFramePermissions": [
+    "microphone",
+    "web-share"
+  ]
+}

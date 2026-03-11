@@ -1,0 +1,53 @@
+
+@keyframes donation-pulse {
+  0%, 100% { 
+    transform: scale(1); 
+    filter: brightness(1) drop-shadow(0 0 0px transparent);
+  }
+  50% { 
+    transform: scale(1.05); 
+    filter: brightness(1.2) drop-shadow(0 0 10px var(--color-primary));
+  }
+}
+
+@keyframes donation-body-pulse {
+  0% { 
+    transform: scale(1); 
+    opacity: 0.6;
+    box-shadow: 0 0 0 0 rgba(var(--color-primary-rgb), 0.4);
+  }
+  70% { 
+    transform: scale(1.5); 
+    opacity: 0;
+    box-shadow: 0 0 0 15px rgba(var(--color-primary-rgb), 0);
+  }
+  100% { 
+    transform: scale(1.5); 
+    opacity: 0;
+    box-shadow: 0 0 0 0 rgba(var(--color-primary-rgb), 0);
+  }
+}
+
+.animate-donation-pulse {
+  animation: donation-pulse 1.5s ease-in-out infinite;
+}
+
+.animate-donation-body {
+  animation: donation-body-pulse 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.theme-aware {
+  transition: background-color 0.6s cubic-bezier(0.2, 0, 0, 1),
+              border-color 0.6s cubic-bezier(0.2, 0, 0, 1),
+              color 0.6s cubic-bezier(0.2, 0, 0, 1),
+              box-shadow 0.6s cubic-bezier(0.2, 0, 0, 1);
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.animate-shimmer {
+  animation: shimmer 3s infinite;
+}
